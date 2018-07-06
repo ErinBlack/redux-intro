@@ -35,7 +35,7 @@ class App extends Component {
 
   deleteColors = (e) => {
     e.preventDefault();
-    const action = {type: 'DELETE_COLORS', payload: []}
+    const action = {type: 'DELETE_COLORS'}
     this.props.dispatch(action);
   }
 
