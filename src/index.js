@@ -12,20 +12,34 @@ import logger from 'redux-logger';
 // Whatever we return, is passed in as the 'state' on next function call
 const counterReducer = (state = 0, action) => {
     //Filter down to specific action type
-    if(action.type === 'ADDTOCOUNTER') {
+    if(action.type === 'ADD_TO_COUNTER') {
         return state + 1;
     }
-    if (action.type === 'SUBTRACTFROMCOUNTER') {
+    if (action.type === 'SUBTRACT_FROM_COUNTER') {
             return state - 1;
         }
     return state; // return the current state if no changes were made
 }
 
+const secondReducer = (state = [], action) => {
+    if(action.type === 'ADD_COLOR') {
+        // adding new color to the array
+        return [...state, action.payload];
+    }
+    if(action.type === 'DELETE_COLORS') {
+        return [];
+    }
+    return state;
+}
+
+
+
 
 const storeInstance = createStore(
     // This is a reducer
     combineReducers({
-        counterReducer
+        counterReducer,
+        secondReducer
     }),
     applyMiddleware(logger)
     
